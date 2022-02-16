@@ -1,0 +1,33 @@
+### Database Design - Conceptual Modelling
+- ANSI/SPARC architecture
+  - <img width="400" alt="Screen Shot 2022-02-15 at 9 31 47 PM" src="https://user-images.githubusercontent.com/24580756/154072014-8826d1de-90b7-4b12-b475-e07b4bbbe309.png">
+- ER (Entity-Relationship) Modeling
+  - Basic components: Entity, Attribute, Relationship
+- Conceptual Design
+  - Corresponds to the conceptual level of the ANSI/SPARC architecture
+  - Independent of all physical implementation considerations
+  - <img width="400" alt="Screen Shot 2022-02-15 at 9 58 28 PM" src="https://user-images.githubusercontent.com/24580756/154076654-84259afd-047e-4dd7-a96d-03a23b388d0d.png">
+- Logical Design
+  - Develop a data model which targets a particular database model
+  - Independent of any implementation details which are specific to any particular vendors DBMS package
+  - Normalisation technique is uesd to test the correctness of a relational logical model
+  - <img width="400" alt="Screen Shot 2022-02-16 at 5 48 35 PM" src="https://user-images.githubusercontent.com/24580756/154238813-95cf7008-5b85-4849-a2e1-3bfb47d1c9cb.png">
+- Physical Design
+  - Choose appropriate storage structures, indexes, file organizations and access methods which will most efficiently support the user requirements
+  - dependent on the particular DBMS environment in use
+  - ANSI/SPARC internal level
+- Connecitivity
+  - <img width="150" alt="Screen Shot 2022-02-16 at 5 56 10 PM" src="https://user-images.githubusercontent.com/24580756/154240152-78d7585d-dab5-4d12-855e-cf95b6e3518d.png">
+- Weak vs Strong Entity
+  - Strong entity: has a key which may be defined without reference to other entities
+  - Weak entity: has a key which requires the existence of one or more other entities
+  - Database designer often determines whether an entity can be described as weak based on business rules
+- Identifying vs Non-Identifying Relationship
+  - <img width="606" alt="Screen Shot 2022-02-16 at 5 59 49 PM" src="https://user-images.githubusercontent.com/24580756/154240776-68304087-35ec-4d81-a450-8a6f63fc24fe.png">
+- Types of Attributes
+  - Simple: cannot be subivided
+  - Composite: can be subdivided into additional attributes
+  - Single-valued: can have only a single value
+  - Multi-valued: can have many values
+  - Derived: can be derived with algorithm
+  - Attribute classification is driven by client requirments
