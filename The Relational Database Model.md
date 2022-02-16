@@ -1,0 +1,101 @@
+### The Relational Database Model
+- The Relational Model
+  - Basic structure is the mathematical concept of a relation mapped to the "concept" of a table (tabular representation of relation)
+    - Relation - abstract object
+    - Table - pictorial representation
+    - Storage structure - "real thing"
+  - Relational Model Terminology
+    - DOMAIN - set of atomic(indivisible) values
+    - specify: name, data type, data format
+- A relation
+  - A relation consists of two parts: heading, body
+  - Relation Heading
+    - Also called Relational Schema consists of a fixed set of attributes
+      - R(A1, A2, ..., An)
+    - Each attribute corresponds to one underlying domain
+  - Relation Body
+    - Also called Relation Instance (state of the relation at any point in time)
+      - r(R) = {t1, t2, t3, ..., tm}
+      - consists of a time-varying set of n-tuples
+      - m = number of tuples = **relation cardinality**
+      - each n-tuple is an ordered list n values
+      - t = <v1, v2, ..., vn>
+        - n = number of values in tuple (no of attributes) = **relation degree**
+      - relation heading -> column headings
+      - relation body -> selt of data rows
+- Relation Properties
+  - No duplicate tuples: tuples must be unique
+  - Tuples are unordered within a relation: tuples can only be accessed by content
+  - No ordering of attributes within a tuple
+  - Tuple values are atomic (cannot be divided): no multivalued (repeating) attributes allowed, called the first normal form rule
+  - Compare with tabular representation
+    - normally nothing to prevent duplicate rows
+    - rows are ordered
+    - columns are ordered
+  - tables and relations are not the same thing
+- Functional Dependency
+  - A set of attributes A functionally determines an attribute B if, and only if, for each A value, there is exactly one value of B in the relation. 
+    - It is denoted as A -> B (A determines B, or B depends on A)
+- Relational Model Keys
+  - A **superkey** of a relation R is an attribute or set of attributes which exhibits only the uniqueness property
+    - No two tuples of R have the same value for the superkey (Uniqueness property)
+    - many possible superkeys
+  - A **candidate key** CK of a relation R is an attribute or set of attributes which exhibits the following properties
+    - Uniqueness property (as above), and
+    - No proper subset of CK has the uniqueness property (Minimality or Irreducibility property) ie. a minimal superkey
+    - Potentially many possible candidate keys
+  - One candidate key is chosen to be the **primary key** (PK) of a relation. Remaining candidate keys are termed alternate keys (AK)
+    - Only ONE primary key (may be composed of many attributes - a composite primary key)
+- Selection of a Primary key
+  - A primary key must be chosen considering the data that may be added to the table in the future
+    - PK should be free of "extra" semantic meaning and security compliant, preferably a single attribute, preferably numeric
+    - Natural vs. Surrogate primary key
+- Null in the Relational Model
+  - Null is NOT a value - is a representation of the fact that there is NO VALUE
+  - Reasons for a Null:
+    - value not applicable
+    - value unknown
+    - value does not exist
+    - value undefined
+- Writing Relations
+  - RELATION_NAME(attribute1, attribute2,...)
+- Relational Database
+  - A relational database is a collection of normalized relations
+  - Normalization is part of the design phase of the database
+- Foreign Key (FK)
+  - FK: An attribute/s in a relation that exists in the same, or another relation as a Primary Key
+  - Referential integrity
+    - **A Foreign Key value must either match the full primary key in a relation or be NULL**
+  - The pairing of PK and FK creates relationships (logical connections) between tables when implemented in a RDBMS. Hens the abstraction away from the underlying storage model
+- Data Integrity
+  - Entity integrity
+    - Primary key value must not be NULL
+    - No duplicate tuple property then ensures taht each primary key must be unique
+  - Referential integrity
+    - The values of FK must either match a value of a full PK in the related relation or be NULL
+  - Column/Domain integrity
+    - All values in a given column must come from the same domain (the same data type and range)
+- Relational DMLs
+  - Relational Calculus
+    - Based on mathematical logic, non-procedural
+    - Operators may be applied to any number of relations
+  - Relational Algebra
+    - Relationally complete, procedural
+    - Operators only apply to at most two relations at a time
+    - 8 basic operations: single relation (selection, projection), cartesian product, join, union, intersection, difference, division
+      - Relational Operation PROJECT <img src="https://latex.codecogs.com/svg.image?\pi&space;" title="\pi " />
+      - Relational Operation SELECT <img src="https://latex.codecogs.com/svg.image?\sigma" title="\sigma" />
+      - eg. SELECT project_manager FROM project WHERE project_code = '25-5A'
+      - eg. <img src="https://latex.codecogs.com/svg.image?\pi_{project\_manager}(\sigma_{project\_code=25-5A}PROJECT)" title="\pi_{project\_manager}(\sigma_{project\_code=25-5A}PROJECT)" />
+  - Transform Oriented Languages (eg. SQL)
+  - Graphical Languages
+  - Exhibit the "closure" property - queries on relations produce relations
+- JOIN (combine data from two or more relations based on common attributes)
+  - theta-join (Generalized join)
+    - (Relation_1) ⨝_F (Relation_2)
+    - F is a predicate (i.e. truth-valued function) which is of the form Relation_1.ai <img src="https://latex.codecogs.com/svg.image?\theta" title="\theta" /> Relation2.bi
+    - <img src="https://latex.codecogs.com/svg.image?\theta" title="\theta" /> is one of the standard arithmetic comparison operators, i.e. <, ≤, =,≥, >
+    - Most commonly, <img src="https://latex.codecogs.com/svg.image?\theta" title="\theta" /> is equals (=), but can be any of the operators
+  - equi-join
+  - natural join
+  - outer join
